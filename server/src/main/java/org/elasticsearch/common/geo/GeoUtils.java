@@ -552,6 +552,12 @@ public class GeoUtils {
                         + ". Must be between 4 and " + PLUSCODE_MAX_LENGTH + " , and must be even if less than 8.");
                 }
                 break;
+            case maptile:
+                if (precision < 0 || precision > GeoHashUtils.MAX_ZOOM) {
+                    throw new IllegalArgumentException("Invalid geohash maptile aggregation precision of " + precision +
+                        ". Must be between 0 and " + GeoHashUtils.MAX_ZOOM + ".");
+                }
+                break;
             default:
                 throw new IllegalArgumentException("Unknown type " + type.toString());
         }

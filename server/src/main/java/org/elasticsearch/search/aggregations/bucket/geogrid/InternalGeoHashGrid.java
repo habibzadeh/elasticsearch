@@ -86,6 +86,8 @@ public class InternalGeoHashGrid extends InternalMultiBucketAggregation<Internal
                     return GeoHashUtils.stringEncode(geohashAsLong);
                 case pluscode:
                     return GeoHashUtils.decodePluscode(geohashAsLong);
+                case maptile:
+                    return GeoHashUtils.geoTileMapHashToKey(geohashAsLong);
                 default:
                     throw new IllegalArgumentException();
             }
@@ -98,6 +100,8 @@ public class InternalGeoHashGrid extends InternalMultiBucketAggregation<Internal
                     return GeoPoint.fromGeohash(geohashAsLong);
                 case pluscode:
                     return GeoHashUtils.bboxFromPluscode(geohashAsLong);
+                case maptile:
+                    return GeoHashUtils.bboxFromTileIndex(geohashAsLong);
                 default:
                     throw new IllegalArgumentException();
             }
